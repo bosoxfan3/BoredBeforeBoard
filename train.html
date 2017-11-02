@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FrontEnd Train App</title>
+  <link rel="stylesheet" href="train.css">
+</head>
+
+<body>
+  <div class="js-homepage">
+    <h1>Train Time Estimator</h1>
+    <h3>Get up to date train estimates and entertain yourself while you wait</h3>
+    <form action="#" class="js-search-form">
+      <select name="selectedStation" id="stationSearch">
+        <option value="12th">12th St. Oakland City Center</option>
+        <option value="16th">16th St. Mission (SF)</option>
+        <option value="19th">19th St. Oakland</option>
+        <option value="24th">24th St. Mission (SF)</option>
+        <option value="ashb">Ashby (Berkeley)</option>
+        <option value="balb">Balboa Park (SF)</option>
+        <option value="bayf">Bay Fair (San Leandro)</option>
+        <option value="cast">Castro Valley</option>
+        <option value="mlbr">Millbrae</option>
+      </select>
+      <select name="selectedDirection" id="directionSearch">
+        <option value="N">North</option>
+        <option value="S">South</option>
+      </select>
+      <button type="submit" class="js-search-button">Search</button>
+    </form>
+  </div>
+
+  <div class="js-results-page">
+    <div class="js-train-results">
+    </div>
+    <div class="js-ron-swanson-quotes">
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="train.js"></script>
+</body>
+
+</html>
