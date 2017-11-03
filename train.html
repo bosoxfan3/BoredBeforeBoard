@@ -33,11 +33,25 @@
     </form>
   </div>
 
-  <div class="js-results-page">
+  <div class="js-results-page" hidden>
     <div class="js-train-results">
     </div>
-    <div class="js-ron-swanson-quotes">
+    <button type="button" class="js-show-quote-button">Bored? Generate a Ron Swanson Quote!</button>
+    <div class="js-bored-quotes" hidden>
+      <button type="button" class="js-display-quote">Get Ron Swanson Quote</button>
+      <div class="js-ron-swanson-quote">
+      </div>
+      <button type="button" class="js-show-youtube-search" hidden>Still Bored? Click This To Search YouTube</button>
     </div>
+    <div class="js-bored-videos" hidden>
+      <form action="#" class="js-youtube-search">
+        <input type="text" id="youTubeSearch">
+        <button type="submit">Search</button>
+      </form>
+      <div class="js-youtube-results">
+      </div>
+    </div>
+    <button type="button" class="js-go-homepage">Back To Search</button>
   </div>
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

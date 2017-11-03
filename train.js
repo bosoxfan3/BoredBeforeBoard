@@ -1,11 +1,11 @@
 'use strict';
 
 const STORE = {
-  bookTitle: 'Ender\'s Game',
   trainData: null,
+  ronSwansonQuote: null,
   youTubeData: [],
-  api_key: 'MW9S-E7SL-26DU-VV8V',
-  currentIndex: null
+  BARTapi_key: 'MW9S-E7SL-26DU-VV8V',
+  youtube_api_key: 'AIzaSyBQV-GhhCOVYxkTVYtSzufauAvpVxNr_4o'
 };
 
 //get train search results
@@ -14,7 +14,7 @@ function findETDFromAPI(station, direction, callback) {
   let query = {
     cmd: 'etd',
     orig: station,
-    key: STORE.api_key,
+    key: STORE.BARTapi_key,
     dir: direction,
     json: 'y'
   };
@@ -94,5 +94,92 @@ $('.js-search-form').submit(event => {
   let station = $('#stationSearch').val();
   let direction = $('#directionSearch').val();
   findETDFromAPI(station, direction, displayEstimatedTimesFromAPI);
+  $('.js-homepage').attr('hidden', true);
+  $('.js-results-page').removeAttr('hidden');
 });
 //end get train search results
+
+//get ron swanson quote
+const FIND_RON_SWANSON_QUOTE = 'http://ron-swanson-quotes.herokuapp.com/v2/quotes';
+function findQuoteFromAPI(callback) {
+  $.getJSON(FIND_RON_SWANSON_QUOTE, function(response) {
+    STORE.ronSwansonQuote = response;
+    displayQuoteFromAPI(STORE);
+  });
+}
+
+function displayQuoteFromAPI(store) {
+  let quoteData = store.ronSwansonQuote;
+  let result = `
+    <p>${quoteData}</p>
+    <img src="https://media1.giphy.com/media/d7qFTitBNU9kk/giphy.gif">
+  `;
+  $('.js-ron-swanson-quote').html(result);
+}
+
+$('.js-display-quote').click(event => {
+  event.preventDefault();
+  findQuoteFromAPI(displayQuoteFromAPI);
+  $('.js-show-youtube-search').removeAttr('hidden');
+});
+//end get ron swanson quote
+
+//get youtube search results
+const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
+function getDataFromYouTubeAPI(searchTerm, callback) {
+  const query = {
+    q: searchTerm,
+    part: 'snippet',
+    key: STORE.youtube_api_key
+  };
+  $.getJSON(YOUTUBE_SEARCH_URL, query, function(response) {
+    STORE.youTubeData = response;
+    displayVideosFromYouTube(STORE);
+  })
+}
+
+function renderYouTubeResults(items) {
+  let result = ' ';
+  $.each(items, function (index, value) {
+    if (value.id.videoId) {
+      let videoLink = 'https://www.youtube.com/watch?v=' + value.id.videoId;
+      let embedLink = 'https://www.youtube.com/embed/' + value.id.videoId;
+      if ((value.snippet.title).length > 35) {
+        value.snippet.title = (value.snippet.title).substr(0, 35)+'...';
+      }
+      result += `<div title="youtube-video-${index}"><iframe width="350" height="250" src="${embedLink}"></iframe>` +
+              '<br>' +
+              `<a href="${videoLink}">${value.snippet.title}</a></div>`;
+    }
+  });
+  $('.js-youtube-results').html(result);
+}
+
+function displayVideosFromYouTube(store) {
+  let data = store.youTubeData;
+  renderYouTubeResults(data.items);
+}
+
+$('.js-youtube-search').submit(event => {
+  event.preventDefault();
+  let typedInput = $('#youTubeSearch').val();
+  getDataFromYouTubeAPI(typedInput);
+  $('#youTubeSearch').val('');
+});
+//end get youtube search results
+
+$('.js-show-quote-button').click(event => {
+  event.preventDefault();
+  $('.js-bored-quotes').removeAttr('hidden');
+  $('.js-show-quote-button').attr('hidden', true);
+});
+
+$('.js-show-youtube-search').click(event => {
+  event.preventDefault();
+  $('.js-bored-videos').removeAttr('hidden');
+});
+
+$('.js-go-homepage').click(event => {
+  $('.js-homepage').removeAttr('hidden');
+  $('.js-results-page').attr('hidden', true);
+});
