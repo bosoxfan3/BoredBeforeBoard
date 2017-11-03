@@ -27,10 +27,9 @@ function findETDFromAPI(station, direction, callback) {
 function renderMultipleDestinations(item) {
   let result = `<h3>${item.destination}</h3>`;
   if (item.estimate.length > 1) {
-    let multipleResults = item.estimate.map(item2 => {
-      return renderMultipleTrainTimes(item2);
+    item.estimate.forEach(item2 => {
+      result += renderMultipleTrainTimes(item2);
     });
-    result += multipleResults;
   } else {
     if (item.estimate[0].minutes === 'Leaving') {
       result += `
@@ -66,15 +65,13 @@ function displayEstimatedTimesFromAPI(store) {
     <h1>Results for ${trainData.name}</h1>
   `;
   if (trainData.etd.length > 1) {
-    let multipleResults = trainData.etd.map(item => {
-      return renderMultipleDestinations(item);
+    trainData.etd.forEach(item => {
+      results += renderMultipleDestinations(item);
     });
-    results += multipleResults;
   } else if (trainData.etd[0].estimate.length > 1) {
-    let oneStationMultipleEstimates = trainData.etd[0].estimate.map(item => {
-      return renderMultipleTrainTimes(item);
+    trainData.etd[0].estimate.map(item => {
+      results += renderMultipleTrainTimes(item);
     });
-    results += oneStationMultipleEstimates;
   } else {
     if (trainData.etd[0].estimate[0].minutes === 'Leaving') {
       results += `
