@@ -64,26 +64,30 @@ function displayEstimatedTimesFromAPI(store) {
   results = `
     <h1>Results for ${trainData.name}</h1>
   `;
-  if (trainData.etd.length > 1) {
-    trainData.etd.forEach(item => {
-      results += renderMultipleDestinations(item);
-    });
-  } else if (trainData.etd[0].estimate.length > 1) {
-    results += `<h3>${trainData.etd[0].destination}</h3>`;
-    trainData.etd[0].estimate.map(item => {
-      results += renderMultipleTrainTimes(item);
-    });
-  } else {
-    results += `<h3>${trainData.etd[0].destination}</h3>`;
-    if (trainData.etd[0].estimate[0].minutes === 'Leaving') {
-      results += `
+  if (trainData.etd) {
+    if (trainData.etd.length > 1) {
+      trainData.etd.forEach(item => {
+        results += renderMultipleDestinations(item);
+      });
+    } else if (trainData.etd[0].estimate.length > 1) {
+      results += `<h3>${trainData.etd[0].destination}</h3>`;
+      trainData.etd[0].estimate.map(item => {
+        results += renderMultipleTrainTimes(item);
+      });
+    } else {
+      results += `<h3>${trainData.etd[0].destination}</h3>`;
+      if (trainData.etd[0].estimate[0].minutes === 'Leaving') {
+        results += `
       <p>${trainData.etd[0].estimate[0].minutes}, Platform ${trainData.etd[0].estimate[0].platform}, Color: ${trainData.etd[0].estimate[0].color}</p>
       `;
-    } else {
-      results += `
+      } else {
+        results += `
       <p>${trainData.etd[0].estimate[0].minutes} Minutes, Platform ${trainData.etd[0].estimate[0].platform}, Color: ${trainData.etd[0].estimate[0].color}</p>
       `;
+      }
     }
+  } else {
+    results += '</p>No train data available for that station and direction.</p>';
   }
   $('.js-train-results').html(results);
 }
@@ -134,7 +138,7 @@ function getDataFromYouTubeAPI(searchTerm, callback) {
   $.getJSON(YOUTUBE_SEARCH_URL, query, function(response) {
     STORE.youTubeData = response;
     displayVideosFromYouTube(STORE);
-  })
+  });
 }
 
 function renderYouTubeResults(items) {
