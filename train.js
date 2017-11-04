@@ -145,14 +145,8 @@ function renderYouTubeResults(items) {
   let result = ' ';
   $.each(items, function (index, value) {
     if (value.id.videoId) {
-      let videoLink = 'https://www.youtube.com/watch?v=' + value.id.videoId;
       let embedLink = 'https://www.youtube.com/embed/' + value.id.videoId;
-      if ((value.snippet.title).length > 35) {
-        value.snippet.title = (value.snippet.title).substr(0, 35)+'...';
-      }
-      result += `<div title="youtube-video-${index}"><iframe width="350" height="250" src="${embedLink}"></iframe>` +
-              '<br>' +
-              `<a href="${videoLink}">${value.snippet.title}</a></div>`;
+      result += `<div title="youtube-video-${index}"><iframe width="350" height="250" src="${embedLink}"></iframe>`;
     }
   });
   $('.js-youtube-results').html(result);
