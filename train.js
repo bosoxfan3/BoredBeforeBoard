@@ -33,11 +33,11 @@ function renderMultipleDestinations(item) {
   } else {
     if (item.estimate[0].minutes === 'Leaving') {
       result += `
-      <p>${item.estimate[0].minutes}</p>
+      <p>${item.estimate[0].minutes}, Platform ${item.estimate[0].platform}, Color: ${item.estimate[0].color}</p>
       `;
     } else {
       result += `
-        <p>${item.estimate[0].minutes} Minutes</p>
+        <p>${item.estimate[0].minutes} Minutes, Platform ${item.estimate[0].platform}, Color: ${item.estimate[0].color}</p>
       `;
     }
   }
@@ -47,10 +47,10 @@ function renderMultipleDestinations(item) {
 function renderMultipleTrainTimes(item) {
   let results;
   if (item.minutes === 'Leaving') {
-    results = `<p>${item.minutes}</p>`;
+    results = `<p>${item.minutes}, Platform ${item.platform}, Color: ${item.color}</p>`;
     return results;
   } else {
-    results = `<p>${item.minutes} Minutes</p>`;
+    results = `<p>${item.minutes} Minutes, Platform ${item.platform}, Color: ${item.color}</p>`;
     return results;
   }
 }
@@ -69,17 +69,19 @@ function displayEstimatedTimesFromAPI(store) {
       results += renderMultipleDestinations(item);
     });
   } else if (trainData.etd[0].estimate.length > 1) {
+    results += `<h3>${trainData.etd[0].destination}</h3>`;
     trainData.etd[0].estimate.map(item => {
       results += renderMultipleTrainTimes(item);
     });
   } else {
+    results += `<h3>${trainData.etd[0].destination}</h3>`;
     if (trainData.etd[0].estimate[0].minutes === 'Leaving') {
       results += `
-      <p>${trainData.etd[0].estimate[0].minutes}</p>
+      <p>${trainData.etd[0].estimate[0].minutes}, Platform ${trainData.etd[0].estimate[0].platform}, Color: ${trainData.etd[0].estimate[0].color}</p>
       `;
     } else {
       results += `
-      <p>${trainData.etd[0].estimate[0].minutes} Minutes</p>
+      <p>${trainData.etd[0].estimate[0].minutes} Minutes, Platform ${trainData.etd[0].estimate[0].platform}, Color: ${trainData.etd[0].estimate[0].color}</p>
       `;
     }
   }
