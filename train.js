@@ -143,7 +143,9 @@ function getDataFromYouTubeAPI(searchTerm, callback) {
 
 function renderYouTubeResults(items) {
   let result = ' ';
-  $.each(items, function (index, value) {
+  let fourItems = items.slice(0, 4);
+  //general youtube search returns 5 videos, I only wanted 4
+  $.each(fourItems, function (index, value) {
     if (value.id.videoId) {
       let embedLink = 'https://www.youtube.com/embed/' + value.id.videoId;
       result += `<div title="youtube-video-${index}"><iframe width="350" height="250" src="${embedLink}"></iframe>`;
