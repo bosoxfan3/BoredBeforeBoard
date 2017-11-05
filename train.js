@@ -1,6 +1,8 @@
 'use strict';
 
 const STORE = {
+  station: null,
+  direction: null,
   trainData: null,
   ronSwansonQuote: null,
   chuckNorrisJoke: null,
@@ -63,7 +65,7 @@ function displayEstimatedTimesFromAPI(store) {
   let results;
   console.log(trainData);
   results = `
-    <h1>Results for ${trainData.name}</h1>
+    <h1>Results for ${trainData.name} Heading ${STORE.direction}</h1>
   `;
   if (trainData.etd) {
     if (trainData.etd.length > 1) {
@@ -95,11 +97,16 @@ function displayEstimatedTimesFromAPI(store) {
 
 $('.js-search-form').submit(event => {
   event.preventDefault();
-  let station = $('#stationSearch').val();
-  let direction = $('#directionSearch').val();
-  findETDFromAPI(station, direction, displayEstimatedTimesFromAPI);
+  STORE.station = $('#stationSearch').val();
+  STORE.direction = $('#directionSearch').val();
+  findETDFromAPI(STORE.station, STORE.direction, displayEstimatedTimesFromAPI);
   $('.js-homepage').attr('hidden', true);
   $('.js-results-page').removeAttr('hidden');
+});
+
+$('.js-train-refresh').click(event => {
+  event.preventDefault();
+  findETDFromAPI(STORE.station, STORE.direction, displayEstimatedTimesFromAPI);
 });
 //end get train search results
 
@@ -189,6 +196,8 @@ $('.js-youtube-search').submit(event => {
   $('#youTubeSearch').val('');
 });
 //end get youtube search results
+
+
 $('.js-show-quote-div').click(event => {
   $('.js-bored-jokes').attr('hidden', true);
   $('.js-display-joke').attr('hidden', true);
