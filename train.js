@@ -3,6 +3,7 @@
 const STORE = {
   trainData: null,
   ronSwansonQuote: null,
+  chuckNorrisJoke: null,
   youTubeData: [],
   BARTapi_key: 'MW9S-E7SL-26DU-VV8V',
   youtube_api_key: 'AIzaSyBQV-GhhCOVYxkTVYtSzufauAvpVxNr_4o'
@@ -123,9 +124,31 @@ function displayQuoteFromAPI(store) {
 $('.js-display-quote').click(event => {
   event.preventDefault();
   findQuoteFromAPI(displayQuoteFromAPI);
-  $('.js-show-youtube-search').removeAttr('hidden');
 });
 //end get ron swanson quote
+
+//get chuck norris joke
+const FIND_CHUCK_NORRIS_JOKE = 'http://api.icndb.com/jokes/random';
+function findJokeFromAPI(callback) {
+  $.getJSON(FIND_CHUCK_NORRIS_JOKE, function(response) {
+    STORE.chuckNorrisJoke = response;
+    displayJokeFromAPI(STORE);
+  });
+}
+
+function displayJokeFromAPI(store) {
+  let jokeData = store.chuckNorrisJoke;
+  let result = `
+    <p>${jokeData.value.joke}</p>
+    <img src="https://media1.tenor.com/images/eda65eadf312e50e52406da4f51a2906/tenor.gif?itemid=3565110">
+  `;
+  $('.js-chuck-norris-joke').html(result);
+}
+
+$('.js-display-joke').click(event => {
+  findJokeFromAPI(displayJokeFromAPI);
+});
+//end get chuck norris joke
 
 //get youtube search results
 const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
@@ -148,7 +171,7 @@ function renderYouTubeResults(items) {
   $.each(fourItems, function (index, value) {
     if (value.id.videoId) {
       let embedLink = 'https://www.youtube.com/embed/' + value.id.videoId;
-      result += `<div title="youtube-video-${index}"><iframe width="350" height="250" src="${embedLink}"></iframe>`;
+      result += `<div title="youtube-video-${index}"><iframe width="225" height="150" src="${embedLink}"></iframe>`;
     }
   });
   $('.js-youtube-results').html(result);
@@ -166,19 +189,36 @@ $('.js-youtube-search').submit(event => {
   $('#youTubeSearch').val('');
 });
 //end get youtube search results
-
-$('.js-show-quote-button').click(event => {
-  event.preventDefault();
+$('.js-show-quote-div').click(event => {
+  $('.js-bored-jokes').attr('hidden', true);
+  $('.js-display-joke').attr('hidden', true);
+  $('.js-bored-videos').attr('hidden', true);
   $('.js-bored-quotes').removeAttr('hidden');
-  $('.js-show-quote-button').attr('hidden', true);
+  $('.js-display-quote').removeAttr('hidden');
 });
 
-$('.js-show-youtube-search').click(event => {
-  event.preventDefault();
-  $('.js-bored-videos').removeAttr('hidden');
+$('.js-show-joke-div').click(event => {
+  $('.js-bored-videos').attr('hidden', true);
+  $('.js-bored-quotes').attr('hidden', true);
+  $('.js-display-quote').attr('hidden', true);
+  $('.js-bored-jokes').removeAttr('hidden');
+  $('.js-display-joke').removeAttr('hidden');
 });
+
+$('.js-show-youtube-search-div').click(event => {
+  $('.js-bored-quotes').attr('hidden', true);
+  $('.js-display-quote').attr('hidden', true);
+  $('.js-bored-jokes').attr('hidden', true);
+  $('.js-display-joke').attr('hidden', true);
+  $('.js-bored-videos').removeAttr('hidden');
+})
 
 $('.js-go-homepage').click(event => {
   $('.js-homepage').removeAttr('hidden');
   $('.js-results-page').attr('hidden', true);
+  $('.js-bored-quotes').attr('hidden', true);
+  $('.js-display-quote').attr('hidden', true);
+  $('.js-bored-jokes').attr('hidden', true);
+  $('.js-display-joke').attr('hidden', true);
+  $('.js-bored-videos').attr('hidden', true);
 });

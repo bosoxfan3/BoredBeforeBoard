@@ -70,25 +70,36 @@
     </form>
   </div>
 
-  <div class="js-results-page" hidden>
-    <div class="js-train-results">
+  <div class="js-results-page result-page" hidden>
+    <div class="top-nav">
+      <h3 class="js-go-homepage go-homepage">Back To Search</h3>
+      <div class="nav-text">
+        <h4>Gonna Be Waiting A While?</h4>
+        <p class="js-show-quote-div">Ron Swanson Quotes</p>
+        <p class="js-show-joke-div">Chuck Norris Jokes</p>
+        <p class="js-show-youtube-search-div">Search YouTube</p>
+      </div>
     </div>
-    <button type="button" class="js-show-quote-button">Bored? Generate a Ron Swanson Quote!</button>
-    <div class="js-bored-quotes" hidden>
-      <button type="button" class="js-display-quote">Get Ron Swanson Quote</button>
+    <div class="js-train-results train-results">
+    </div>
+    <div class="js-bored-quotes bored-quotes" hidden>
+      <button type="button" class="js-display-quote" hidden>Get Ron Swanson Quote</button>
       <div class="js-ron-swanson-quote">
       </div>
-      <button type="button" class="js-show-youtube-search" hidden>Still Bored? Click This To Search YouTube</button>
     </div>
-    <div class="js-bored-videos" hidden>
-      <form action="#" class="js-youtube-search">
+    <div class="js-bored-jokes bored-jokes" hidden>
+      <button type="button" class="js-display-joke" hidden>Get Chuck Norris Joke</button>
+      <div class="js-chuck-norris-joke">
+      </div>
+    </div>
+    <div class="js-bored-videos bored-videos" hidden>
+      <form action="#" class="js-youtube-search youtube-search">
         <input type="text" id="youTubeSearch">
         <button type="submit">Search</button>
       </form>
-      <div class="js-youtube-results">
+      <div class="js-youtube-results youtube-results">
       </div>
     </div>
-    <button type="button" class="js-go-homepage">Back To Search</button>
   </div>
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
