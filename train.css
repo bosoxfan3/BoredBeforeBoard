@@ -6,6 +6,10 @@ body {
   margin: 0;
 }
 
+button:focus {
+  outline: 0;
+}
+
 .homepage {
   text-align: center;
   margin-top: 10%;
@@ -63,9 +67,6 @@ select#directionSearch {
 }
 
 .search-button:hover {
-  background-color: blue;
-  border-color: blue;
-  color: white;
   cursor: pointer;
 }
 
@@ -174,6 +175,7 @@ select#directionSearch {
 .youtube-results {
   margin-top: 15px;
   display: inline-block;
+  text-align: center;
 }
 
 iframe {
@@ -183,6 +185,7 @@ iframe {
 div[title^="youtube"] {
   max-width: 225px;
   display: inline-block;
+  margin: 5px;
 }
 
 img {
