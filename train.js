@@ -2,7 +2,7 @@
 
 const STORE = {
   station: null,
-  direction: null,
+  directionAbbr: null,
   trainData: null,
   ronSwansonQuote: null,
   chuckNorrisJoke: null,
@@ -28,7 +28,7 @@ function findETDFromAPI(station, direction, callback) {
 }
 
 function renderMultipleDestinations(item) {
-  let result = `<h3>${item.destination}</h3>`;
+  let result = `<h2>${item.destination}</h2>`;
   if (item.estimate.length > 1) {
     item.estimate.forEach(item2 => {
       result += renderMultipleTrainTimes(item2);
@@ -64,21 +64,27 @@ function displayEstimatedTimesFromAPI(store) {
   //you will never get results for more than one station
   let results;
   console.log(trainData);
-  results = `
-    <h1>Results for ${trainData.name} Heading ${STORE.direction}</h1>
-  `;
+  if (STORE.directionAbbr === 'N') {
+    results = `
+    <h1>${trainData.name} - Northbound</h1>
+    `;
+  } else if (STORE.directionAbbr === 'S') {
+    results = `
+    <h1>${trainData.name} - Southbound</h1>
+    `;
+  }
   if (trainData.etd) {
     if (trainData.etd.length > 1) {
       trainData.etd.forEach(item => {
         results += renderMultipleDestinations(item);
       });
     } else if (trainData.etd[0].estimate.length > 1) {
-      results += `<h3>${trainData.etd[0].destination}</h3>`;
+      results += `<h2>${trainData.etd[0].destination}</h2>`;
       trainData.etd[0].estimate.map(item => {
         results += renderMultipleTrainTimes(item);
       });
     } else {
-      results += `<h3>${trainData.etd[0].destination}</h3>`;
+      results += `<h2>${trainData.etd[0].destination}</h2>`;
       if (trainData.etd[0].estimate[0].minutes === 'Leaving') {
         results += `
       <p>${trainData.etd[0].estimate[0].minutes}, Platform ${trainData.etd[0].estimate[0].platform}, Color: ${trainData.etd[0].estimate[0].color}</p>
@@ -98,15 +104,15 @@ function displayEstimatedTimesFromAPI(store) {
 $('.js-search-form').submit(event => {
   event.preventDefault();
   STORE.station = $('#stationSearch').val();
-  STORE.direction = $('#directionSearch').val();
-  findETDFromAPI(STORE.station, STORE.direction, displayEstimatedTimesFromAPI);
+  STORE.directionAbbr = $('#directionSearch').val();
+  findETDFromAPI(STORE.station, STORE.directionAbbr, displayEstimatedTimesFromAPI);
   $('.js-homepage').attr('hidden', true);
   $('.js-results-page').removeAttr('hidden');
 });
 
 $('.js-train-refresh').click(event => {
   event.preventDefault();
-  findETDFromAPI(STORE.station, STORE.direction, displayEstimatedTimesFromAPI);
+  findETDFromAPI(STORE.station, STORE.directionAbbr, displayEstimatedTimesFromAPI);
 });
 //end get train search results
 
@@ -122,7 +128,7 @@ function findQuoteFromAPI(callback) {
 function displayQuoteFromAPI(store) {
   let quoteData = store.ronSwansonQuote;
   let result = `
-    <p>${quoteData}</p>
+    <p>"${quoteData}"</p>
     <img src="https://media1.giphy.com/media/d7qFTitBNU9kk/giphy.gif">
   `;
   $('.js-ron-swanson-quote').html(result);
@@ -178,7 +184,7 @@ function renderYouTubeResults(items) {
   $.each(fourItems, function (index, value) {
     if (value.id.videoId) {
       let embedLink = 'https://www.youtube.com/embed/' + value.id.videoId;
-      result += `<div title="youtube-video-${index}"><iframe width="225" height="150" src="${embedLink}"></iframe>`;
+      result += `<div title="youtube"><iframe width="225" height="150" src="${embedLink}"></iframe></div>`;
     }
   });
   $('.js-youtube-results').html(result);

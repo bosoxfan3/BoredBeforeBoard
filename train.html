@@ -7,12 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>FrontEnd Train App</title>
   <link rel="stylesheet" href="train.css">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
-  <div class="js-homepage">
-    <h1>Train Time Estimator</h1>
-    <h3>Get up to date train estimates and entertain yourself while you wait</h3>
+  <div class="js-homepage homepage">
+    <h1>Bored Before Boarding</h1>
+    <h2>Get Up To The Minute BART Estimates And Entertain Yourself While You Wait</h2>
     <form action="#" class="js-search-form">
       <select name="selectedStation" id="stationSearch">
         <option value="12th">12th St. Oakland City Center</option>
@@ -62,11 +64,11 @@
         <option value="wdub">West Dublin</option>
         <option value="woak">West Oakland</option>
       </select>
-      <select name="selectedDirection" id="directionSearch">
-        <option value="N">North</option>
-        <option value="S">South</option>
+      <select id="directionSearch">
+        <option value="N" name="North">North</option>
+        <option value="S" name="South">South</option>
       </select>
-      <button type="submit" class="js-search-button">Search</button>
+      <button type="submit" class="js-search-button search-button">Search</button>
     </form>
   </div>
 
