@@ -11,6 +11,7 @@ button:focus {
 }
 
 .homepage {
+  margin-top: 20%;
   text-align: center;
 }
 
@@ -29,7 +30,7 @@ select {
   -webkit-appearance: button;
   -webkit-border-radius: 2px;
   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  -webkit-padding-end: 20px;
+  -webkit-padding-end: 40px !important;
   -webkit-padding-start: 2px;
   -webkit-user-select: none;
   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
@@ -41,6 +42,7 @@ select {
   margin: 5px;
   overflow: hidden;
   padding: 5px 10px;
+  width: 200px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -50,7 +52,8 @@ select#stationSearch {
 }
 
 select#directionSearch {
-  width: 150px;
+  width: 100px;
+  background-position: 90% center;
 }
 
 .search-button {
@@ -66,18 +69,6 @@ select#directionSearch {
 
 .search-button:hover {
   cursor: pointer;
-}
-
-.train-results h1 {
-  font-family: Roboto;
-}
-
-.train-results h2 {
-  font-family: Roboto;
-}
-
-.train-results p {
-  font-family: Roboto;
 }
 
 .result-page button {
@@ -113,36 +104,46 @@ select#directionSearch {
 
 .nav-bored-choices {
   display: inline-block;
-  /*position: absolute;*/
-  /*left: 40%;*/
-  /*padding-right: 10px;*/
 }
 
-label {
+.bored-choice label {
   display: block;
   padding-top: 5px;
 }
 
 .bored-choice {
-  /* position: absolute;
-  top: 10%;
-  right: 10%; */
   text-align: right;
+}
+
+select#boredChoice {
+  background-position: 95% center;
 }
 
 .train-results {
   display: inline-block;
-  /*position: absolute;
-  left: 0;
-  width: 50%;*/
   text-align: center;
+}
+
+.train-results h1 {
+  font-family: Roboto;
+}
+
+.train-results h2 {
+  font-family: Roboto;
+}
+
+.train-results p {
+  font-family: Roboto;
+}
+
+img {
+  width: 300px;
+  height: 250px;
+  margin-top: 20px;
 }
 
 .bored-quotes {
   display: inline-block;
-  /*position: relative;
-  width: 50%;
-  margin-left: 50%;*/
   text-align: center;
   margin-top: 30px;
   padding-right: 5px;
@@ -150,9 +151,6 @@ label {
 
 .bored-jokes {
   display: inline-block;
-  /*position: relative;
-  width: 50%;
-  margin-left: 50%;*/
   text-align: center;
   margin-top: 30px;
   padding-right: 5px;
@@ -160,10 +158,11 @@ label {
 
 .bored-videos {
   display: inline-block;
-  /*position: relative;
-  width: 50%;
-  margin-left: 50%;*/
   margin-top: 30px;
+}
+
+.youtube-search {
+  text-align: center;
 }
 
 #youTubeSearch {
@@ -172,13 +171,8 @@ label {
   border-color: darkgray;
 }
 
-.youtube-search {
-  text-align: center;
-}
-
 .youtube-results {
   margin-top: 15px;
-  /*display: inline-block;*/
   text-align: center;
 }
 
@@ -191,10 +185,3 @@ div[title^="youtube"] {
   display: inline-block;
   margin: 5px;
 }
-
-img {
-  width: 300px;
-  height: 250px;
-  margin-top: 20px;
-}
-

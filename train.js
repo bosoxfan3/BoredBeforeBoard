@@ -201,6 +201,7 @@ $('.js-youtube-search').submit(event => {
 });
 //end get youtube search results
 
+//event handlers for showing the various apis and also going back to search page
 $('.js-bored-choice').submit(event => {
   event.preventDefault();
   let choice = $('#boredChoice').val();
@@ -227,31 +228,7 @@ $('.js-bored-choice').submit(event => {
   }
 });
 
-// $('.js-show-quote-div').click(event => {
-//   $('.js-bored-jokes').attr('hidden', true);
-//   $('.js-display-joke').attr('hidden', true);
-//   $('.js-bored-videos').attr('hidden', true);
-//   $('.js-bored-quotes').removeAttr('hidden');
-//   $('.js-display-quote').removeAttr('hidden');
-// });
-
-// $('.js-show-joke-div').click(event => {
-//   $('.js-bored-videos').attr('hidden', true);
-//   $('.js-bored-quotes').attr('hidden', true);
-//   $('.js-display-quote').attr('hidden', true);
-//   $('.js-bored-jokes').removeAttr('hidden');
-//   $('.js-display-joke').removeAttr('hidden');
-// });
-
-// $('.js-show-youtube-search-div').click(event => {
-//   $('.js-bored-quotes').attr('hidden', true);
-//   $('.js-display-quote').attr('hidden', true);
-//   $('.js-bored-jokes').attr('hidden', true);
-//   $('.js-display-joke').attr('hidden', true);
-//   $('.js-bored-videos').removeAttr('hidden');
-// });
-
-$('.js-go-homepage').click(event => {
+$('.js-go-homepage').click(() => {
   $('.js-homepage').removeAttr('hidden');
   $('.js-results-page').attr('hidden', true);
   $('.js-bored-quotes').attr('hidden', true);
@@ -260,3 +237,4 @@ $('.js-go-homepage').click(event => {
   $('.js-display-joke').attr('hidden', true);
   $('.js-bored-videos').attr('hidden', true);
 });
+//end of event handlers for showing apis and going back to search page
