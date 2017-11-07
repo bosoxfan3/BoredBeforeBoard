@@ -12,7 +12,7 @@ const STORE = {
 };
 
 //get train search results
-const FIND_ETD_BY_STATION = 'http://api.bart.gov/api/etd.aspx';
+const FIND_ETD_BY_STATION = 'https://api.bart.gov/api/etd.aspx';
 function findETDFromAPI(station, direction, callback) {
   let query = {
     cmd: 'etd',
@@ -116,7 +116,7 @@ $('.js-train-refresh').click(() => {
 //end get train search results
 
 //get ron swanson quote
-const FIND_RON_SWANSON_QUOTE = 'http://ron-swanson-quotes.herokuapp.com/v2/quotes';
+const FIND_RON_SWANSON_QUOTE = 'https://ron-swanson-quotes.herokuapp.com/v2/quotes';
 function findQuoteFromAPI(callback) {
   $.getJSON(FIND_RON_SWANSON_QUOTE, function(response) {
     STORE.ronSwansonQuote = response;
@@ -139,7 +139,7 @@ $('.js-display-quote').click(() => {
 //end get ron swanson quote
 
 //get chuck norris joke
-const FIND_CHUCK_NORRIS_JOKE = 'http://api.icndb.com/jokes/random';
+const FIND_CHUCK_NORRIS_JOKE = 'https://api.icndb.com/jokes/random';
 function findJokeFromAPI(callback) {
   $.getJSON(FIND_CHUCK_NORRIS_JOKE, function(response) {
     STORE.chuckNorrisJoke = response;
