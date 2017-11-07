@@ -7,13 +7,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>FrontEnd Train App</title>
   <link rel="stylesheet" href="train.css">
+  <link rel="stylesheet" href="float-grid.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
-  <div class="js-homepage homepage">
-    <h1>Bored Before Boarding</h1>
+  <div class="js-homepage homepage row col-12">
+    <h1>Bored Before Board?</h1>
     <h2>Get Up To The Minute BART Estimates And Entertain Yourself While You Wait</h2>
     <form action="#" class="js-search-form">
       <select name="selectedStation" id="stationSearch">
@@ -73,36 +75,50 @@
   </div>
 
   <div class="js-results-page result-page" hidden>
-    <div class="top-nav">
-      <h3 class="js-go-homepage go-homepage">Back To Search</h3>
-      <div class="nav-text">
-        <h4>Gonna Be Waiting A While?</h4>
-        <p class="js-show-quote-div">Ron Swanson Quotes</p>
-        <p class="js-show-joke-div">Chuck Norris Jokes</p>
-        <p class="js-show-youtube-search-div">Search YouTube</p>
+    <div class="top-nav row">
+      <div class="col-12">
+        <div class="col-3">
+          <h3 class="js-go-homepage go-homepage">Back To Search</h3>
+        </div>
+        <div class="col-3">
+          <br>
+        </div>
+        <div class="nav-bored-choices col-6">
+          <form action="#" class="js-bored-choice bored-choice">
+            <label for="bored-choice">Waiting a While? Entertain Yourself</label>
+            <select name="bored-choice" id="boredChoice">
+              <option value="ron">Ron Swanson Quote Generator</option>
+              <option value="chuck">Chuck Norris Joke Generator</option>
+              <option value="youtube">Search YouTube</option>
+            </select>
+            <button type="submit" class="js-bored-choice-button">Go!</button>
+          </form>
+        </div>
       </div>
     </div>
-    <div class="train-results">
-      <div class="js-train-results">
+    <div class="row">
+      <div class="train-results col-6">
+        <div class="js-train-results">
+        </div>
+        <button type="button" class="js-train-refresh">Refresh Estimated Times</button>
       </div>
-      <button type="button" class="js-train-refresh">Refresh Estimated Times</button>
-    </div>
-    <div class="js-bored-quotes bored-quotes" hidden>
-      <button type="button" class="js-display-quote" hidden>Get Ron Swanson Quote</button>
-      <div class="js-ron-swanson-quote">
+      <div class="js-bored-quotes bored-quotes col-6" hidden>
+        <button type="button" class="js-display-quote" hidden>Get Ron Swanson Quote</button>
+        <div class="js-ron-swanson-quote">
+        </div>
       </div>
-    </div>
-    <div class="js-bored-jokes bored-jokes" hidden>
-      <button type="button" class="js-display-joke" hidden>Get Chuck Norris Joke</button>
-      <div class="js-chuck-norris-joke">
+      <div class="js-bored-jokes bored-jokes col-6" hidden>
+        <button type="button" class="js-display-joke" hidden>Get Chuck Norris Joke</button>
+        <div class="js-chuck-norris-joke">
+        </div>
       </div>
-    </div>
-    <div class="js-bored-videos bored-videos" hidden>
-      <form action="#" class="js-youtube-search youtube-search">
-        <input type="text" id="youTubeSearch">
-        <button type="submit">Search</button>
-      </form>
-      <div class="js-youtube-results youtube-results">
+      <div class="js-bored-videos bored-videos col-6" hidden>
+        <form action="#" class="js-youtube-search youtube-search">
+          <input type="text" id="youTubeSearch">
+          <button type="submit">Search</button>
+        </form>
+        <div class="js-youtube-results youtube-results">
+        </div>
       </div>
     </div>
   </div>

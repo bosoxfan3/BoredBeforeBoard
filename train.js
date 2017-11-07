@@ -63,7 +63,7 @@ function displayEstimatedTimesFromAPI(store) {
   //have to do [0] because station is an array even though in our case
   //you will never get results for more than one station
   let results;
-  console.log(trainData);
+  // console.log(trainData);
   if (STORE.directionAbbr === 'N') {
     results = `
     <h1>${trainData.name} - Northbound</h1>
@@ -110,8 +110,7 @@ $('.js-search-form').submit(event => {
   $('.js-results-page').removeAttr('hidden');
 });
 
-$('.js-train-refresh').click(event => {
-  event.preventDefault();
+$('.js-train-refresh').click(() => {
   findETDFromAPI(STORE.station, STORE.directionAbbr, displayEstimatedTimesFromAPI);
 });
 //end get train search results
@@ -134,8 +133,7 @@ function displayQuoteFromAPI(store) {
   $('.js-ron-swanson-quote').html(result);
 }
 
-$('.js-display-quote').click(event => {
-  event.preventDefault();
+$('.js-display-quote').click(() => {
   findQuoteFromAPI(displayQuoteFromAPI);
 });
 //end get ron swanson quote
@@ -158,7 +156,7 @@ function displayJokeFromAPI(store) {
   $('.js-chuck-norris-joke').html(result);
 }
 
-$('.js-display-joke').click(event => {
+$('.js-display-joke').click(() => {
   findJokeFromAPI(displayJokeFromAPI);
 });
 //end get chuck norris joke
@@ -184,7 +182,7 @@ function renderYouTubeResults(items) {
   $.each(fourItems, function (index, value) {
     if (value.id.videoId) {
       let embedLink = 'https://www.youtube.com/embed/' + value.id.videoId;
-      result += `<div title="youtube"><iframe width="225" height="150" src="${embedLink}"></iframe></div>`;
+      result += `<div title="youtube"><iframe width="200" height="150" src="${embedLink}"></iframe></div>`;
     }
   });
   $('.js-youtube-results').html(result);
@@ -203,30 +201,55 @@ $('.js-youtube-search').submit(event => {
 });
 //end get youtube search results
 
-
-$('.js-show-quote-div').click(event => {
-  $('.js-bored-jokes').attr('hidden', true);
-  $('.js-display-joke').attr('hidden', true);
-  $('.js-bored-videos').attr('hidden', true);
-  $('.js-bored-quotes').removeAttr('hidden');
-  $('.js-display-quote').removeAttr('hidden');
+$('.js-bored-choice').submit(event => {
+  event.preventDefault();
+  let choice = $('#boredChoice').val();
+  if (choice === 'ron') {
+    $('.js-bored-jokes').attr('hidden', true);
+    $('.js-display-joke').attr('hidden', true);
+    $('.js-bored-videos').attr('hidden', true);
+    $('.js-bored-quotes').removeAttr('hidden');
+    $('.js-display-quote').removeAttr('hidden');
+  }
+  if (choice === 'chuck') {
+    $('.js-bored-videos').attr('hidden', true);
+    $('.js-bored-quotes').attr('hidden', true);
+    $('.js-display-quote').attr('hidden', true);
+    $('.js-bored-jokes').removeAttr('hidden');
+    $('.js-display-joke').removeAttr('hidden');
+  }
+  if (choice === 'youtube') {
+    $('.js-bored-quotes').attr('hidden', true);
+    $('.js-display-quote').attr('hidden', true);
+    $('.js-bored-jokes').attr('hidden', true);
+    $('.js-display-joke').attr('hidden', true);
+    $('.js-bored-videos').removeAttr('hidden');
+  }
 });
 
-$('.js-show-joke-div').click(event => {
-  $('.js-bored-videos').attr('hidden', true);
-  $('.js-bored-quotes').attr('hidden', true);
-  $('.js-display-quote').attr('hidden', true);
-  $('.js-bored-jokes').removeAttr('hidden');
-  $('.js-display-joke').removeAttr('hidden');
-});
+// $('.js-show-quote-div').click(event => {
+//   $('.js-bored-jokes').attr('hidden', true);
+//   $('.js-display-joke').attr('hidden', true);
+//   $('.js-bored-videos').attr('hidden', true);
+//   $('.js-bored-quotes').removeAttr('hidden');
+//   $('.js-display-quote').removeAttr('hidden');
+// });
 
-$('.js-show-youtube-search-div').click(event => {
-  $('.js-bored-quotes').attr('hidden', true);
-  $('.js-display-quote').attr('hidden', true);
-  $('.js-bored-jokes').attr('hidden', true);
-  $('.js-display-joke').attr('hidden', true);
-  $('.js-bored-videos').removeAttr('hidden');
-})
+// $('.js-show-joke-div').click(event => {
+//   $('.js-bored-videos').attr('hidden', true);
+//   $('.js-bored-quotes').attr('hidden', true);
+//   $('.js-display-quote').attr('hidden', true);
+//   $('.js-bored-jokes').removeAttr('hidden');
+//   $('.js-display-joke').removeAttr('hidden');
+// });
+
+// $('.js-show-youtube-search-div').click(event => {
+//   $('.js-bored-quotes').attr('hidden', true);
+//   $('.js-display-quote').attr('hidden', true);
+//   $('.js-bored-jokes').attr('hidden', true);
+//   $('.js-display-joke').attr('hidden', true);
+//   $('.js-bored-videos').removeAttr('hidden');
+// });
 
 $('.js-go-homepage').click(event => {
   $('.js-homepage').removeAttr('hidden');
