@@ -1,6 +1,12 @@
 Bored Before Board
 ==================
 
+Table of Contents
+-----------------
+1. [Screenshots](https://github.com/bosoxfan3/BoredBeforeBoard#screenshots)
+2. [Purpose](https://github.com/bosoxfan3/BoredBeforeBoard#purpose)
+3. [Technologies Used] (https://github.com/bosoxfan3/BoredBeforeBoard#technologies-used)
+
 Screenshots
 -----------
 Main page where the user chooses their station and direction
