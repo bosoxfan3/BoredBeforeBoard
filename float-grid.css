@@ -45,3 +45,13 @@
     width: 100%;
   }
 }
+
+/* So that the nav bar text centers on smaller screens*/
+@media only screen and (max-width: 500px) {
+  .col-3 {
+    text-align: center;
+  }
+  .bored-choice {
+    text-align: center !important;
+  }
+}
