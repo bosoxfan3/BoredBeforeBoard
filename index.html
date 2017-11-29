@@ -91,9 +91,10 @@
           <form action="#" class="js-bored-choice bored-choice">
             <label for="bored-choice">Waiting a While? Entertain Yourself</label>
             <select name="bored-choice" id="boredChoice">
-              <option value="ron">Ron Swanson Quote Generator</option>
-              <option value="chuck">Chuck Norris Joke Generator</option>
+              <option value="ron">Ron Swanson Quotes</option>
+              <option value="chuck">Chuck Norris Jokes</option>
               <option value="youtube">Search YouTube</option>
+              <option value="tictactoe">Tic Tac Toe (2-Player)</option>
             </select>
             <button type="submit" class="js-bored-choice-button">Go!</button>
           </form>
@@ -107,12 +108,12 @@
         <button type="button" class="js-train-refresh">Refresh Estimated Times</button>
       </div>
       <div class="js-bored-quotes bored-quotes col-6" hidden>
-        <button type="button" class="js-display-quote" hidden>Get Ron Swanson Quote</button>
+        <button type="button" class="js-display-quote" hidden>Get New Ron Swanson Quote</button>
         <div class="js-ron-swanson-quote">
         </div>
       </div>
       <div class="js-bored-jokes bored-jokes col-6" hidden>
-        <button type="button" class="js-display-joke" hidden>Get Chuck Norris Joke</button>
+        <button type="button" class="js-display-joke" hidden>Get New Chuck Norris Joke</button>
         <div class="js-chuck-norris-joke">
         </div>
       </div>
@@ -122,6 +123,30 @@
           <button type="submit">Search</button>
         </form>
         <div class="js-youtube-results youtube-results">
+        </div>
+      </div>
+      <div class="js-tic-tac-toe tic-tac-toe col-6" hidden>
+        <button type="button" class="js-new-game">New Game</button>
+        <div id="grid">
+          <div id="1" class="grid-element">  
+          </div>
+          <div id="2" class="grid-element">           
+          </div>
+          <div id="3" class="grid-element">      
+          </div>
+          <div id="4" class="grid-element">
+          </div>
+          <div id="5" class="grid-element">  
+          </div>
+          <div id="6" class="grid-element"> 
+          </div>
+          <div id="7" class="grid-element"> 
+          </div>
+          <div id="8" class="grid-element">
+          </div>
+          <div id="9" class="grid-element">
+          </div>
+          <h1 id="who-won"></h1>
         </div>
       </div>
     </div>

@@ -185,3 +185,27 @@ div[title^="youtube"] {
   display: inline-block;
   margin: 5px;
 }
+
+#grid {
+  width: 300px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+.grid-element {
+  box-sizing: border-box;
+  width:100px;
+  float:left;
+  border:1px solid;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.tic-tac-toe {
+  text-align: center;
+  margin-top: 30px;
+}
