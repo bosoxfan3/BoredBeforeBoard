@@ -21,6 +21,9 @@ Results page with train times and chuck norris joke display
 Results page with train times and youtube search display
 ![Results page with train times and youtube search display](/screenshots/4.png)
 
+Results page with train times and tic-tac-toe being played
+![Results page with train times and tic-tac-toe being played](/screenshots/5.png)
+
 Purpose
 -------
 This app has 2 dual purposes: To allow users to get up-to-the-minute updates
@@ -35,6 +38,7 @@ go on YouTube, I made an app where it is possible to both watch YouTube videos a
 have access to train times. I added Chuck Norris and Ron Swanson joke generators
 both for nostalgia's sake and for the times when you have either a short wait or
 a lack of good enough cellular signal for YouTube.
+As an additional entertainment feature in case the user is waiting with someone else, there is also the ability to play tic-tac-toe.
 
 Technologies Used
 -----------------
