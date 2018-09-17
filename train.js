@@ -11,6 +11,20 @@ const STORE = {
   youtube_api_key: 'AIzaSyBQV-GhhCOVYxkTVYtSzufauAvpVxNr_4o'
 };
 
+$(document).ready(function() {
+  const stationInStorage = localStorage.getItem('station');
+  console.log(stationInStorage);
+  const directionInStorage = localStorage.getItem('direction');
+  console.log(directionInStorage);
+  if (stationInStorage && directionInStorage) {
+    STORE.station = stationInStorage;
+    STORE.directionAbbr = directionInStorage;
+    findETDFromAPI(STORE.station, STORE.directionAbbr, displayEstimatedTimesFromAPI);
+    $('.js-homepage').attr('hidden', true);
+    $('.js-results-page').removeAttr('hidden');
+  }
+});
+
 //get train search results
 const FIND_ETD_BY_STATION = 'https://api.bart.gov/api/etd.aspx';
 function findETDFromAPI(station, direction, callback) {
@@ -105,6 +119,8 @@ $('.js-search-form').submit(event => {
   event.preventDefault();
   STORE.station = $('#stationSearch').val();
   STORE.directionAbbr = $('#directionSearch').val();
+  localStorage.setItem('station', STORE.station);
+  localStorage.setItem('direction', STORE.directionAbbr);
   findETDFromAPI(STORE.station, STORE.directionAbbr, displayEstimatedTimesFromAPI);
   $('.js-homepage').attr('hidden', true);
   $('.js-results-page').removeAttr('hidden');
