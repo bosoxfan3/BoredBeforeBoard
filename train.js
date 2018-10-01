@@ -13,9 +13,7 @@ const STORE = {
 
 $(document).ready(function() {
   const stationInStorage = localStorage.getItem('station');
-  console.log(stationInStorage);
   const directionInStorage = localStorage.getItem('direction');
-  console.log(directionInStorage);
   if (stationInStorage && directionInStorage) {
     STORE.station = stationInStorage;
     STORE.directionAbbr = directionInStorage;
@@ -308,7 +306,7 @@ function resetBoard() {
 
 $('#grid').on('click', '.grid-element', function(){
   if (currentPlayer === 1) {
-    $(this).append('<h1>X</h1>');        
+    $(this).append('<h1>X</h1>');
   } else {
     $(this).append('<h1>O</h1>');
   }
@@ -318,7 +316,7 @@ $('#grid').on('click', '.grid-element', function(){
 
 $('.js-new-game').click(function(){
   resetBoard();
-}); 
+});
 //end tic-tac-toe
 
 //event handlers for showing the various apis and also going back to search page
@@ -337,7 +335,7 @@ $('.js-bored-choice').submit(event => {
     $('.js-bored-quotes').attr('hidden', true);
     $('.js-display-quote').attr('hidden', true);
     $('.js-bored-videos').attr('hidden', true);
-    $('.js-tic-tac-toe').att('hidden', true);
+    $('.js-tic-tac-toe').attr('hidden', true);
     $('.js-bored-jokes').removeAttr('hidden');
     $('.js-display-joke').removeAttr('hidden');
   }
