@@ -1,40 +1,92 @@
 # Bored Before Board
 
-## Table of Contents
+A lightweight web app for Bay Area commuters to check real-time BART train schedules and kill time while they wait — with built-in YouTube search and a quick game of Tic-Tac-Toe.
 
-1. [Screenshots](https://github.com/bosoxfan3/BoredBeforeBoard#screenshots)
-2. [Purpose](https://github.com/bosoxfan3/BoredBeforeBoard#purpose)
-3. [Technologies Used](https://github.com/bosoxfan3/BoredBeforeBoard#technologies-used)
+---
 
-## Screenshots
+## 📋 Table of Contents
 
-Main page where the user chooses their station and direction
+1. [Screenshots](#screenshots)
+2. [Purpose](#purpose)
+3. [Technologies Used](#technologies-used)
+4. [Setup & Usage](#setup--usage)
+5. [Notes on PWA Support](#notes-on-pwa-support)
+
+---
+
+## 📸 Screenshots
+
+Main page where the user chooses their station and direction:  
 ![Main page](/screenshots/main.png)
 
-Results page with only train times displaying and no entertainment
+Results page with only train times displayed:  
 ![Results page with no entertainment](/screenshots/times.png)
 
-Results page with train times and youtube search display
-![Results page with train times and youtube search display](/screenshots/youtube.png)
+Results page showing train times + YouTube video search:  
+![Results page with YouTube search](/screenshots/youtube.png)
 
-Results page with train times and tic-tac-toe being played
-![Results page with train times and tic-tac-toe being played](/screenshots/tictactoe.png)
+Results page showing train times + Tic-Tac-Toe game:  
+![Results page with Tic-Tac-Toe](/screenshots/tictactoe.png)
 
-## Purpose
+---
 
-This app has 2 dual purposes: To allow users to get up-to-the-minute updates
-on the schedules of BART (Bay Area Rapid Transit) trains, and to allow users
-to simultaneously access entertainment options within the app so they can
-keep an eye on train arrivals and departures. The app allows access to data from
-all BART stations in all directions. Many BART stations do not have public
-departure and arrival estimate displays, and this app allows users the confidence
-in having accurate data.
-Since my first instinct when seeing a wait time of over a few minutes is to
-go on YouTube, I made an app where it is possible to both watch YouTube videos and
-have access to train times.
-As an additional entertainment feature in case the user is waiting with someone else, there is also the ability to play tic-tac-toe.
+## 🎯 Purpose
 
-## Technologies Used
+This app serves two purposes:
 
-With this being a static frontend app, the extent of my technologies used is
-HTML, CSS for design, Javascript for functionality, and jQuery for DOM manipulation
+-   Provide **real-time BART train schedules** by station and direction, especially for stops that lack public displays.
+-   Offer built-in **entertainment options** (YouTube search and Tic-Tac-Toe) so users can pass time without switching apps.
+
+It’s designed for fast access, clean display, and mobile-friendliness. Whether you're waiting solo or with a friend, there's something to do while keeping tabs on your next train.
+
+---
+
+## 🛠 Technologies Used
+
+-   **HTML/CSS** – static layout and styling
+-   **JavaScript** – core functionality
+-   **jQuery** – DOM manipulation and Ajax requests
+-   **YouTube API** – for video search results
+-   **BART API** – for live transit data
+-   PWA support for installable experience
+
+---
+
+## 🚀 Setup & Usage
+
+### 1. Clone the repository
+
+```
+git clone https://github.com/bosoxfan3/BoredBeforeBoard.git
+cd BoredBeforeBoard
+```
+
+### 2. Add Your API Keys
+
+Create a new file in the root of your project titled config.js. Create and define two variables as outlined below:
+
+```
+const YOUTUBE_API_KEY = 'YOUR_YOUTUBE_API_KEY_HERE';
+const BART_API_KEY = 'YOUR_BART_API_KEY_HERE';
+```
+
+You can get a YouTube API key in the [Google Cloud Console](https://console.cloud.google.com/)
+and can explore BART API key choices [here](https://www.bart.gov/schedules/developers/api)
+
+### 3. Open the app in a browser
+
+Just open index.html in your browser — no build or server required.
+
+## 📱 Notes on PWA Support
+
+This project includes basic PWA setup so it can be installed on mobile devices via "Add to Home Screen":
+
+Includes manifest.json
+
+Supports a simple service worker for installability
+
+No offline caching (functionality depends on API access)
+
+## 🔒 Disclaimer
+
+Your API key is exposed in the frontend, so make sure to restrict it in the Google Cloud Console to specific domains (e.g., yourdomain.com/\*) if deploying.

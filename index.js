@@ -374,3 +374,14 @@ $('.js-go-homepage').click(() => {
     $('.js-tic-tac-toe').attr('hidden', true);
 });
 //end of event handlers for showing apis and going back to search page
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+            .register('./sw.js')
+            .then(() => console.log('Service Worker registered'))
+            .catch((err) =>
+                console.error('Service Worker registration failed:', err)
+            );
+    });
+}
