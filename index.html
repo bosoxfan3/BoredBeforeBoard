@@ -1,162 +1,181 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Bored Before Board</title>
+        <meta
+            name="description"
+            content="Browse YouTube or play games while tracking your BART train's arrival"
+        />
+        <link rel="stylesheet" href="float-grid.css" />
+        <link rel="stylesheet" href="index.css" />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Permanent+Marker"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Roboto"
+            rel="stylesheet"
+        />
+        <meta name="apple-mobile-web-app-title" content="BoredBeforeBoard" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="apple-touch-icon" href="3x.jpg" />
+    </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>FrontEnd Train App</title>
-  <link rel="stylesheet" href="float-grid.css">
-  <link rel="stylesheet" href="train.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <meta name="apple-mobile-web-app-title" content="BoredBeforeBoard">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="apple-touch-icon" href="3x.jpg">
-</head>
+    <body>
+        <div class="js-homepage row">
+            <div class="col-12">
+                <div class="homepage">
+                    <h1>Bored Before Board?</h1>
+                    <h2>
+                        Get Up To The Minute BART Estimates And Entertain
+                        Yourself While You Wait
+                    </h2>
+                    <form action="#" class="js-search-form">
+                        <select name="selectedStation" id="stationSearch">
+                            <option value="12th">
+                                12th St. Oakland City Center
+                            </option>
+                            <option value="16th">16th St. Mission (SF)</option>
+                            <option value="19th">19th St. Oakland</option>
+                            <option value="24th">24th St. Mission (SF)</option>
+                            <option value="ashb">Ashby (Berkeley)</option>
+                            <option value="balb">Balboa Park (SF)</option>
+                            <option value="bayf">Bay Fair (San Leandro)</option>
+                            <option value="cast">Castro Valley</option>
+                            <option value="civc">Civic Center (SF)</option>
+                            <option value="cols">Coliseum</option>
+                            <option value="colm">Colma</option>
+                            <option value="conc">Concord</option>
+                            <option value="daly">Daly City</option>
+                            <option value="dbrk">Downtown Berkeley</option>
+                            <option value="dubl">Dublin/Pleasanton</option>
+                            <option value="deln">El Berrito del Norte</option>
+                            <option value="plza">El Cerrito Plaza</option>
+                            <option value="embr">Embaracadero (SF)</option>
+                            <option value="frmt">Fremont</option>
+                            <option value="ftvl">Fruitvale (Oakland)</option>
+                            <option value="glen">Glen Park (SF)</option>
+                            <option value="hayw">Hayward</option>
+                            <option value="lafy">Lafayette</option>
+                            <option value="lake">Lake Merritt (Oakland)</option>
+                            <option value="mcar">MacArthur (Oakland)</option>
+                            <option value="mlbr">Millbrae</option>
+                            <option value="mont">Mongotmery St. (SF)</option>
+                            <option value="nbrk">North Berkeley</option>
+                            <option value="ncon">North Concord/Martinez</option>
+                            <option value="oakl">Oakland Int'l Airport</option>
+                            <option value="orin">Orinda</option>
+                            <option value="pitt">Pittsburg/Bay Point</option>
+                            <option value="phil">Pleasant Hill</option>
+                            <option value="powl">Powell St. (SF)</option>
+                            <option value="rich">Richmond</option>
+                            <option value="rock">Rockridge (Oakland)</option>
+                            <option value="sbrn">San Bruno</option>
+                            <option value="sfia">
+                                San Francisco Int'l Airport
+                            </option>
+                            <option value="sanl">San Leandro</option>
+                            <option value="shay">South Hayward</option>
+                            <option value="ssan">South San Francisco</option>
+                            <option value="ucty">Union City</option>
+                            <option value="warm">
+                                Warm Springs/South Fremont
+                            </option>
+                            <option value="wcrk">Walnut Creek</option>
+                            <option value="wdub">West Dublin</option>
+                            <option value="woak">West Oakland</option>
+                        </select>
+                        <select id="directionSearch">
+                            <option value="N" name="North">North</option>
+                            <option value="S" name="South">South</option>
+                        </select>
+                        <button
+                            type="submit"
+                            class="js-search-button search-button"
+                        >
+                            Search
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-<body>
-  <div class="js-homepage row">
-    <div class="col-12">
-      <div class="homepage">
-        <h1>Bored Before Board?</h1>
-        <h2>Get Up To The Minute BART Estimates And Entertain Yourself While You Wait</h2>
-        <form action="#" class="js-search-form">
-          <select name="selectedStation" id="stationSearch">
-            <option value="12th">12th St. Oakland City Center</option>
-            <option value="16th">16th St. Mission (SF)</option>
-            <option value="19th">19th St. Oakland</option>
-            <option value="24th">24th St. Mission (SF)</option>
-            <option value="ashb">Ashby (Berkeley)</option>
-            <option value="balb">Balboa Park (SF)</option>
-            <option value="bayf">Bay Fair (San Leandro)</option>
-            <option value="cast">Castro Valley</option>
-            <option value="civc">Civic Center (SF)</option>
-            <option value="cols">Coliseum</option>
-            <option value="colm">Colma</option>
-            <option value="conc">Concord</option>
-            <option value="daly">Daly City</option>
-            <option value="dbrk">Downtown Berkeley</option>
-            <option value="dubl">Dublin/Pleasanton</option>
-            <option value="deln">El Berrito del Norte</option>
-            <option value="plza">El Cerrito Plaza</option>
-            <option value="embr">Embaracadero (SF)</option>
-            <option value="frmt">Fremont</option>
-            <option value="ftvl">Fruitvale (Oakland)</option>
-            <option value="glen">Glen Park (SF)</option>
-            <option value="hayw">Hayward</option>
-            <option value="lafy">Lafayette</option>
-            <option value="lake">Lake Merritt (Oakland)</option>
-            <option value="mcar">MacArthur (Oakland)</option>
-            <option value="mlbr">Millbrae</option>
-            <option value="mont">Mongotmery St. (SF)</option>
-            <option value="nbrk">North Berkeley</option>
-            <option value="ncon">North Concord/Martinez</option>
-            <option value="oakl">Oakland Int'l Airport</option>
-            <option value="orin">Orinda</option>
-            <option value="pitt">Pittsburg/Bay Point</option>
-            <option value="phil">Pleasant Hill</option>
-            <option value="powl">Powell St. (SF)</option>
-            <option value="rich">Richmond</option>
-            <option value="rock">Rockridge (Oakland)</option>
-            <option value="sbrn">San Bruno</option>
-            <option value="sfia">San Francisco Int'l Airport</option>
-            <option value="sanl">San Leandro</option>
-            <option value="shay">South Hayward</option>
-            <option value="ssan">South San Francisco</option>
-            <option value="ucty">Union City</option>
-            <option value="warm">Warm Springs/South Fremont</option>
-            <option value="wcrk">Walnut Creek</option>
-            <option value="wdub">West Dublin</option>
-            <option value="woak">West Oakland</option>
-          </select>
-          <select id="directionSearch">
-            <option value="N" name="North">North</option>
-            <option value="S" name="South">South</option>
-          </select>
-          <button type="submit" class="js-search-button search-button">Search</button>
-        </form>
-      </div>
-    </div>
-  </div>
+        <div class="js-results-page result-page" hidden>
+            <div class="top-nav row">
+                <div class="col-12">
+                    <div class="col-3">
+                        <h3 class="js-go-homepage go-homepage">
+                            Back To Search
+                        </h3>
+                    </div>
+                    <div class="col-3">
+                        <br />
+                    </div>
+                    <div class="nav-bored-choices col-6">
+                        <form action="#" class="js-bored-choice bored-choice">
+                            <label for="bored-choice"
+                                >Waiting a While? Entertain Yourself</label
+                            >
+                            <select name="bored-choice" id="boredChoice">
+                                <option value="youtube">Search YouTube</option>
+                                <option value="tictactoe">
+                                    Tic Tac Toe (2-Player)
+                                </option>
+                            </select>
+                            <button
+                                type="submit"
+                                class="js-bored-choice-button"
+                            >
+                                Go!
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="train-results col-6">
+                    <div class="js-train-results"></div>
+                    <button type="button" class="js-train-refresh">
+                        Refresh Estimated Times
+                    </button>
+                </div>
+                <div class="js-bored-videos bored-videos col-6" hidden>
+                    <form action="#" class="js-youtube-search youtube-search">
+                        <input type="text" id="youTubeSearch" />
+                        <button type="submit">Search</button>
+                    </form>
+                    <div class="js-youtube-results youtube-results"></div>
+                </div>
+                <div class="js-tic-tac-toe tic-tac-toe col-6" hidden>
+                    <button type="button" class="js-new-game">New Game</button>
+                    <div id="grid">
+                        <div id="1" class="grid-element"></div>
+                        <div id="2" class="grid-element"></div>
+                        <div id="3" class="grid-element"></div>
+                        <div id="4" class="grid-element"></div>
+                        <div id="5" class="grid-element"></div>
+                        <div id="6" class="grid-element"></div>
+                        <div id="7" class="grid-element"></div>
+                        <div id="8" class="grid-element"></div>
+                        <div id="9" class="grid-element"></div>
+                        <h1 id="who-won"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <div class="js-results-page result-page" hidden>
-    <div class="top-nav row">
-      <div class="col-12">
-        <div class="col-3">
-          <h3 class="js-go-homepage go-homepage">Back To Search</h3>
-        </div>
-        <div class="col-3">
-          <br>
-        </div>
-        <div class="nav-bored-choices col-6">
-          <form action="#" class="js-bored-choice bored-choice">
-            <label for="bored-choice">Waiting a While? Entertain Yourself</label>
-            <select name="bored-choice" id="boredChoice">
-              <option value="ron">Ron Swanson Quotes</option>
-              <option value="chuck">Chuck Norris Jokes</option>
-              <option value="youtube">Search YouTube</option>
-              <option value="tictactoe">Tic Tac Toe (2-Player)</option>
-            </select>
-            <button type="submit" class="js-bored-choice-button">Go!</button>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="train-results col-6">
-        <div class="js-train-results">
-        </div>
-        <button type="button" class="js-train-refresh">Refresh Estimated Times</button>
-      </div>
-      <div class="js-bored-quotes bored-quotes col-6" hidden>
-        <button type="button" class="js-display-quote" hidden>Get New Ron Swanson Quote</button>
-        <div class="js-ron-swanson-quote">
-        </div>
-      </div>
-      <div class="js-bored-jokes bored-jokes col-6" hidden>
-        <button type="button" class="js-display-joke" hidden>Get New Chuck Norris Joke</button>
-        <div class="js-chuck-norris-joke">
-        </div>
-      </div>
-      <div class="js-bored-videos bored-videos col-6" hidden>
-        <form action="#" class="js-youtube-search youtube-search">
-          <input type="text" id="youTubeSearch">
-          <button type="submit">Search</button>
-        </form>
-        <div class="js-youtube-results youtube-results">
-        </div>
-      </div>
-      <div class="js-tic-tac-toe tic-tac-toe col-6" hidden>
-        <button type="button" class="js-new-game">New Game</button>
-        <div id="grid">
-          <div id="1" class="grid-element">
-          </div>
-          <div id="2" class="grid-element">
-          </div>
-          <div id="3" class="grid-element">
-          </div>
-          <div id="4" class="grid-element">
-          </div>
-          <div id="5" class="grid-element">
-          </div>
-          <div id="6" class="grid-element">
-          </div>
-          <div id="7" class="grid-element">
-          </div>
-          <div id="8" class="grid-element">
-          </div>
-          <div id="9" class="grid-element">
-          </div>
-          <h1 id="who-won"></h1>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="train.js"></script>
-</body>
-
+        <script
+            type="text/javascript"
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+        ></script>
+        <script src="config.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+    </body>
 </html>
