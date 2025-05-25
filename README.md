@@ -9,16 +9,16 @@
 ## Screenshots
 
 Main page where the user chooses their station and direction
-![Main page](/screenshots/1.png)
+![Main page](/screenshots/main.png)
 
 Results page with only train times displaying and no entertainment
-![Results page with no entertainment](/screenshots/2.png)
+![Results page with no entertainment](/screenshots/times.png)
 
 Results page with train times and youtube search display
-![Results page with train times and youtube search display](/screenshots/4.png)
+![Results page with train times and youtube search display](/screenshots/youtube.png)
 
 Results page with train times and tic-tac-toe being played
-![Results page with train times and tic-tac-toe being played](/screenshots/5.png)
+![Results page with train times and tic-tac-toe being played](/screenshots/tictactoe.png)
 
 ## Purpose
 
