@@ -61,9 +61,19 @@ git clone https://github.com/bosoxfan3/BoredBeforeBoard.git
 cd BoredBeforeBoard
 ```
 
-### 2. Add Your API Keys
+### 2. About the API Keys
 
-Create a new file in the root of your project titled config.js. Create and define two variables as outlined below:
+This project requires API keys for YouTube and BART to function.
+
+> ⚠️ API keys used in this project are intentionally exposed for demonstration purposes. They are restricted to specific domains and only allow read-only access. In a production environment, sensitive keys should be kept server-side or behind a build system.
+
+### Option 1: Use the app as-is (read-only keys included)
+
+The `config.js` file is included for demo purposes with domain-restricted, read-only API keys. You can use the app without modification.
+
+### Option 2: Use your own API keys (recommended for contributors)
+
+If you'd like to fork or modify the project, create a file named `config.js` in the root of the project and define your own keys:
 
 ```
 const YOUTUBE_API_KEY = 'YOUR_YOUTUBE_API_KEY_HERE';
@@ -72,6 +82,10 @@ const BART_API_KEY = 'YOUR_BART_API_KEY_HERE';
 
 You can get a YouTube API key in the [Google Cloud Console](https://console.cloud.google.com/)
 and can explore BART API key choices [here](https://www.bart.gov/schedules/developers/api)
+
+### 🔒 Disclaimer
+
+Your API keys are exposed in the frontend, so make sure to restrict the YouTube key in the Google Cloud Console to specific domains (e.g., yourdomain.com/\*) if deploying.
 
 ### 3. Open the app in a browser
 
@@ -86,7 +100,3 @@ Includes manifest.json
 Supports a simple service worker for installability
 
 No offline caching (functionality depends on API access)
-
-## 🔒 Disclaimer
-
-Your API key is exposed in the frontend, so make sure to restrict it in the Google Cloud Console to specific domains (e.g., yourdomain.com/\*) if deploying.

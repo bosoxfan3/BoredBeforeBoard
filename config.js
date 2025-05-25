@@ -1,0 +1,2 @@
+const YOUTUBE_API_KEY = 'AIzaSyD2raw1Vumx8aXMhjxVl5bQH2qASzMCcIY';
+const BART_API_KEY = 'MW9S-E7SL-26DU-VV8V';
